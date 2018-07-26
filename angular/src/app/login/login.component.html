@@ -1,0 +1,41 @@
+<div class="signup">
+  Login
+</div>
+
+<nav>
+  <a routerLink="/signuppage">Signup</a>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h3>MEAN App</h3>
+        <form name="form" (ngSubmit)="f.form.valid && loginUser()" #f="ngForm" novalidate *ngIf="alertData.type != 'success'">
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="userForm.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required />
+            <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
+              <div *ngIf="userName.errors.required">User Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="userForm.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary flRight customBtn">Cancel</button>
+            <button class="btn btn-primary customBtn">Login</button>
+          </div>
+        </form>
+        <p>
+          <ngb-alert type={{alertData.type}} *ngIf="alertData.show" (close)="successMessage = null">{{alertData.message}}</ngb-alert>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
