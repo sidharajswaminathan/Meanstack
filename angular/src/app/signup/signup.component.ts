@@ -11,13 +11,11 @@ export class SignupComponent implements OnInit {
   userForm: any = {};
   alertData: any = {};
   routerValues: any = {'url': ''};
-  matchPassword = false;
   constructor(private ajaxservice: AjaxService, private router: Router) { }
 
   ngOnInit() {
     this.alertData.show = false;
     this.alertData.message = '';
-    this.userForm.confirmpassword.invalid = true;
   }
 
   /*Method to register user details*/
@@ -33,7 +31,7 @@ export class SignupComponent implements OnInit {
     console.log(this.userForm);
   }
 
-  onSubmit() {
+  onSubmit(resp) {
     /*alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));*/
     if (this.userForm.password === this.userForm.confirmpassword) {
       this.ajaxservice.postMethod('signup', this.userForm).subscribe((data: any) => {
@@ -45,9 +43,7 @@ export class SignupComponent implements OnInit {
         this.routerValues.url = ['/loginpage'];
         setTimeout(() => {this.alertData.show = false; this.router.navigate(this.routerValues.url); } , 5000);
       });
-    } else {
-      this.matchPassword = true;
-      this.userForm.confirmpassword.invalid = true;
     }
   }
+
 }

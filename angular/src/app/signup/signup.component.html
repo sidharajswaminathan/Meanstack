@@ -47,7 +47,6 @@
             <div *ngIf="f.submitted && confirmpassword.invalid" class="invalid-feedback">
               <div *ngIf="confirmpassword.errors.required">Confirm Password is required</div>
               <div *ngIf="confirmpassword.errors.minlength">Password must be at least 6 characters</div>
-              <div *ngIf="matchPassword">Password doesn't match.</div>
             </div>
           </div>
           <div class="form-group">
@@ -59,7 +58,7 @@
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary flRight customBtn" routerLink="/loginpage">Login</button>
+            <button class="btn btn-primary flRight customBtn" routerLink="/loginpage">Already registered user / Login Now</button>
             <button class="btn btn-primary customBtn">Register</button>
           </div>
         </form>
