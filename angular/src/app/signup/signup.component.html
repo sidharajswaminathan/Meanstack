@@ -5,13 +5,35 @@
         <h3>User Registration</h3>
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="form-group">
-            <label for="userName">User Name</label>
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="userForm.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+            <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+              <div *ngIf="firstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="userForm.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+            <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+              <div *ngIf="lastName.errors.required">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="userName">Preferred User Name</label>
             <input type="text" class="form-control" name="userName" [(ngModel)]="userForm.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required />
             <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
               <div *ngIf="userName.errors.required">User Name is required</div>
             </div>
           </div>
           <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="userForm.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+          <!-- <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" name="firstName" [(ngModel)]="userForm.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
             <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
@@ -56,10 +78,10 @@
               <div *ngIf="phonenumber.errors.required">phonenumber is required</div>
               <div *ngIf="phonenumber.errors.minlength">phonenumber must be at least 6 characters</div>
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
             <button class="btn btn-primary flRight customBtn" routerLink="/loginpage">Already registered user / Login Now</button>
-            <button class="btn btn-primary customBtn">Register</button>
+            <button class="btn btn-primary customBtn">Submit</button>
           </div>
         </form>
         <p>

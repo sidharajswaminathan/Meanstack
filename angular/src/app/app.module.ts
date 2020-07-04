@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import {AjaxService} from './ajax.service';
 import { ReactiveformSignupComponent } from './reactiveform-signup/reactiveform-signup.component';
+import { FamilyPageComponent } from './family-page/family-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    ReactiveformSignupComponent
+    ReactiveformSignupComponent,
+    FamilyPageComponent
   ],
   imports: [
     BrowserModule,

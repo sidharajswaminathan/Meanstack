@@ -14,6 +14,7 @@ export class ReactiveformSignupComponent implements OnInit {
   routerValues: any = {'url': ''};
   registerForm : FormGroup;
   submitted: boolean = false;
+  loading: boolean = false;
   constructor(private formbuilder: FormBuilder,private ajaxservice: AjaxService, private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class ReactiveformSignupComponent implements OnInit {
       firstName: ['',Validators.required],
       lastName: ['',Validators.required],
       password: ['',[Validators.required, Validators.minLength(6), this.passwordValidator]],
-      confirmPassword: ['',[Validators.required, Validators.minLength(6), this.confirmpasswordValidator]],
+      /* confirmPassword: ['',[Validators.required, Validators.minLength(6), this.confirmpasswordValidator]], */
       email: ['',[Validators.required, Validators.email]],
     });
   }
@@ -70,17 +71,18 @@ export class ReactiveformSignupComponent implements OnInit {
   registerUser(){
     this.submitted = true;
     // stop here if form is invalid
+    this.registerForm.value.password = "12345678";
     if (this.registerForm.invalid) {
       return;
     }
     this.ajaxservice.postMethod('signup', this.registerForm.value).subscribe((data: any) => {
       console.log(data);
       this.userForm = {};
-      this.alertData.message = 'User Details has been registered successfully!';
+      this.alertData.message = 'Your request has been sent to super admin successfully!';
       this.alertData.show = true;
       this.alertData.type = 'success';
-      this.routerValues.url = ['/loginpage'];
-      setTimeout(() => {this.alertData.show = false; this.router.navigate(this.routerValues.url); } , 5000);
+      //this.routerValues.url = ['/familytree'];
+      //setTimeout(() => {this.alertData.show = false; this.router.navigate(this.routerValues.url); } , 5000);
     });
   }
 

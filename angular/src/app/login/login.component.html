@@ -1,16 +1,13 @@
-<div class="signup">
-  Login
+<div class="back-to-familytree">
+  <nav>
+    <a routerLink="/familytree">&#60;&#45;&#45;&#45;back to home page</a>
+  </nav>
 </div>
-
-<nav>
-  <a routerLink="/signuppage">Signup</a>
-</nav>
-
 <div class="jumbotron">
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-        <h3>MEAN App</h3>
+        <!-- <h3>MEAN App</h3> -->
         <form name="form" (ngSubmit)="f.form.valid && loginUser()" #f="ngForm" novalidate *ngIf="alertData.type != 'success'">
           <div class="form-group">
             <label for="userName">User Name</label>

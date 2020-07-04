@@ -1,0 +1,16 @@
+header{
+    border: 1px solid;
+    padding: 0px;
+}
+header div{
+    float: left;
+}
+section{
+    float: left;
+    text-align: center;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+header div:last-child{
+    padding-right: 0px;
+}

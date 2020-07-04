@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
     console.log(this.userForm);
   }
 
-  onSubmit(resp) {
+  onSubmit() {
     /*alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));*/
     if (this.userForm.password === this.userForm.confirmpassword) {
       this.ajaxservice.postMethod('signup', this.userForm).subscribe((data: any) => {
